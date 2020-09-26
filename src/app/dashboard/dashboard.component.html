@@ -18,31 +18,43 @@
   <div class="container pl-3 flex flex-col">
       <img src="assets/pixeltrue-vision.svg" class="mt-16 mb-5 h-56" />
       <!-- <h1 class="text-center text-4xl px-1"><span class="font-bold">0&nbsp;</span> <small>hits</small></h1> -->
-      <h1 class="text-center text-4xl px-1">0 
-        opportunities</h1>
-      <div class="border-t-2 border-gray-400 ml-4 mr-4 mt-8 mb-5"></div>
+      <h1 class="text-center text-3xl px-1">Hunting opportunities now</h1>
+      <p class="text-center text-base px-1">You'll notified in your email inbox</p>
+     <br/>
 <!-- enable permissions -->
-      <div class="flex flex-row flex-no-wrap">
-        <div class="w-64 px-4 py-4">
-            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+      <form [formGroup]="controlPanelGroup">
+        <div class="flex flex-row flex-no-wrap ">
+            <div class="w-64 px-4 py-4">
+                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                    <input 
+                    style="outline: none;"
+                    type="checkbox" 
+                    formControlName="enablePermissions"
+                    id="enablePermissions" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label 
+                    style="outline: none;"
+                    for="enablePermissions" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
             </div>
-        </div>
-
-        <div class="w-64 px-4 py-4">Allow permissions to get started</div>
-      </div>
-
-      <div class="flex flex-row flex-no-wrap">
-        <div class="w-64 px-4 py-4">
-            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            <div class="w-64 px-4 py-4">Allow permissions to start now</div>
+        
+          </div>
+    
+          <div class="flex flex-row flex-no-wrap">
+            <div class="w-64 px-4 py-4">
+                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox"  style="outline: none;"
+                    formControlName="dailyNotifications" 
+                    id="dailyNotifications" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="dailyNotifications" 
+                    style="outline: none;"
+                    class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
             </div>
-        </div>
-
-        <div class="w-64 px-4 py-4">Disable weekly notifications</div>
-      </div>
+    
+            <div class="w-64 px-4 py-4">Weekly notifications enabled</div>
+          </div>
+      </form>
 
  
       <div class="mt-6 mr-4 ml-4">
