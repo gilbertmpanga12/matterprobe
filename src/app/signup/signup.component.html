@@ -1,5 +1,5 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full">
+    <div class="max-w-md w-64">
       <div>
         <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg" alt="Workflow">
         <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-white">
@@ -7,7 +7,7 @@
         </h2>
         <p class="mt-2 text-center text-sm leading-5 text-white">
           Or
-          <a (click)="service.setSignIn()" class="font-medium text-white hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150">
+          <a (click)="service.setSignIn()" class="cursor-pointer font-medium text-white hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150">
             log in your account
           </a>
         </p>
@@ -35,17 +35,12 @@
         </div>
   
         <div class="mt-6 flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember_me" type="checkbox" class="form-checkbox h-4 w-4 text-white transition duration-150 ease-in-out">
-            <label for="remember_me" class="ml-2 block text-sm leading-5 text-white">
-              Remember me
-            </label>
-          </div>
+         
   
           <div class="text-sm leading-5">
             <a (click)="service.setPassword()"
             
-            class="font-medium text-white hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150">
+            class="cursor-pointer font-medium text-white hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150">
               Forgot your password?
             </a>
           </div>
