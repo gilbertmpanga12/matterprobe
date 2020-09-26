@@ -31,7 +31,8 @@
               "src/background.js"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/tailwindcss/dist/tailwind.min.css"
             ],
             "scripts": []
           },
