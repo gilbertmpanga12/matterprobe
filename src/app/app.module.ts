@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { EmailactivationComponent } from './emailactivation/emailactivation.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { environment } from 'src/environments/environment';
     SignupComponent,
     SignInComponent,
     DashboardComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    EmailactivationComponent
   ],
   imports: [
     BrowserModule, ReactiveFormsModule,
