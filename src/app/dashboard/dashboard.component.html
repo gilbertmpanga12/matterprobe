@@ -1,1 +1,64 @@
-<p>dashboard works!</p>
+
+<div class="toolbar" role="banner">
+    <img
+      width="40"
+      alt="Angular Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    />
+    <span>Matterprobe</span>
+      <!-- <div class="spacer"></div>
+      <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+        <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+          <rect width="400" height="400" fill="none"/>
+          <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
+        </svg>
+      </a> -->
+  </div>
+
+  <div class="container pl-3 flex flex-col">
+      <img src="assets/pixeltrue-vision.svg" class="mt-16 mb-5 h-56" />
+      <!-- <h1 class="text-center text-4xl px-1"><span class="font-bold">0&nbsp;</span> <small>hits</small></h1> -->
+      <h1 class="text-center text-4xl px-1">0 
+        opportunities</h1>
+      <div class="border-t-2 border-gray-400 ml-4 mr-4 mt-8 mb-5"></div>
+<!-- enable permissions -->
+      <div class="flex flex-row flex-no-wrap">
+        <div class="w-64 px-4 py-4">
+            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
+        </div>
+
+        <div class="w-64 px-4 py-4">Allow permissions to get started</div>
+      </div>
+
+      <div class="flex flex-row flex-no-wrap">
+        <div class="w-64 px-4 py-4">
+            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
+        </div>
+
+        <div class="w-64 px-4 py-4">Disable weekly notifications</div>
+      </div>
+
+ 
+      <div class="mt-6 mr-4 ml-4">
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 
+        border border-transparent text-sm leading-5 font-medium rounded-md text-white 
+        bg-green-400 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 
+        focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <!-- <svg class="" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg> -->
+
+            <svg class="h-5 w-5 text-white transition ease-in-out duration-150" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          </span>
+          Go to dashboard
+        </button>
+      </div>
+
+  </div>
