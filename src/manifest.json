@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Matterprobe",
+    "version": "0.0.1",
+    "description": "The chrome extension that hunts for jobs & earning opportunities on the internet for you.",
+    "permissions": [
+    "tabs",
+    "activeTab",
+    "alarms",
+    "notifications",
+    "storage",
+    "https://*.google.com/",
+    "webNavigation",
+    "activeTab",
+    "bookmarks",
+    "declarativeContent"
+    ],
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_title": "Matterprobe"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
