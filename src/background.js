@@ -6,7 +6,7 @@
 //
 // Guide for background pages: https://developer.chrome.com/extensions/background_pages
 
-declare const chrome: any;
+
 
 chrome.runtime.onInstalled.addListener(function() {
     // // @TODO Arbitrary task on installed - try opening a new tab here (for signup)
