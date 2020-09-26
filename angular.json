@@ -33,9 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-             
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -126,8 +124,13 @@
               "devServerTarget": "matterprobe:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "matterprobe"
 }
