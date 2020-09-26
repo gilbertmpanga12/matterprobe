@@ -22,4 +22,9 @@ signInGroup: FormGroup;
     });
   }
 
+  signIn(): void{
+    let payload = this.signInGroup.getRawValue();
+    this.service.login(payload['email'], payload['password']);
+  }
+
 }

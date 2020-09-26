@@ -17,4 +17,9 @@ export class ForgotpasswordComponent implements OnInit {
     })
   }
 
+  forgotPassword(): void{
+    let payload = this.passwordForgetGroup.getRawValue();
+    this.service.forgotPassword(payload['email']);
+  }
+
 }

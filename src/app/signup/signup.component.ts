@@ -20,4 +20,13 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  register(): void{
+    let payload = this.signUpGroup.getRawValue();
+    this.service.registerAccount({
+      name: payload['name'],
+      email: payload['email'],
+      password: payload['password']
+    });
+  }
+
 }
