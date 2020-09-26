@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   signUpGroup: FormGroup;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, public service: MainService) { }
 
   ngOnInit(): void {
     
