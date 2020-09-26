@@ -23,7 +23,7 @@ export class MainService {
     });
   }
 
-   setSignIn(): void{
+   setSignIn(): void {
     this.isSignIn = true;
     this.isSignUp = false;
     this.isPasswordForgot = false;
@@ -57,7 +57,7 @@ export class MainService {
    user.user.updateProfile({displayName: payload.name});
    this.resendEmailLink();
    this.isLoading = false;
-   await this.firestore.collection('users').doc(user.user.uid) // <Student>
+   await this.firestore.collection('users_matterprobe').doc(user.user.uid) // <Student>
    .set({
    name: payload.name,
    email: payload.email,
@@ -74,6 +74,20 @@ export class MainService {
   async forgotPassword(email: string){
     await this.auth.sendPasswordResetEmail(email);
   }
+
+
+  async syncUrls(url: string){
+    let user = await this.auth.currentUser;
+    await this.firestore.collection('browse_history').doc(user.uid) // <Student>
+   .set({
+   url: url,
+   created_at: Date.now(),
+   uid: user.uid,
+   name: user.displayName
+   });
+  }
+
+
 
 
 }

@@ -1,3 +1,25 @@
-<!-- <app-dashboard></app-dashboard> -->
-<app-sign-in></app-sign-in>
+<app-dashboard *ngIf="service.user?.emailVerified"></app-dashboard>
+<app-sign-in *ngIf="!service.user?.emailVerified"></app-sign-in>
+
+
+<div
+*ngIf="service.user == undefined"
+style="
+vertical-align: middle;
+text-align: center;
+border-style: none;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);">
+<div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
+
+
+
 
