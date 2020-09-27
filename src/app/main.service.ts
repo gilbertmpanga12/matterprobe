@@ -150,8 +150,51 @@ export class MainService {
   }
 
   async setPermissions(change: boolean){
-
     localStorage.setItem('allowPermissions', `${change}`);
+
+    // request permissions
+    /*
+    chrome.permissions.request({
+          permissions: ['tabs'],
+          origins: ['http://www.google.com/']
+        }, function(granted) {
+          // The callback argument will be true if the user granted the permissions.
+          if (granted) {
+            doSomething();
+          } else {
+            doSomethingElse();
+          }
+        });
+    */
+
+    // check if contains permissions
+    /*
+     chrome.permissions.contains({
+        permissions: ['tabs'],
+        origins: ['http://www.google.com/']
+      }, function(result) {
+        if (result) {
+          // The extension has the permissions.
+        } else {
+          // The extension doesn't have the permissions.
+        }
+      });
+    */
+
+    // Remove permissions
+    /*
+    chrome.permissions.remove({
+        permissions: ['tabs'],
+        origins: ['http://www.google.com/']
+      }, function(removed) {
+        if (removed) {
+          // The permissions have been removed.
+        } else {
+          // The permissions have not been removed (e.g., you tried to remove
+          // required permissions).
+        }
+      });
+    */
 
   }
 
