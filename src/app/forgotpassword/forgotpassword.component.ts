@@ -18,6 +18,11 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   forgotPassword(): void{
+    let valid = this.passwordForgetGroup.invalid;
+    if(valid){
+      alert('Please fill in your email to reset password');
+      return;
+    }
     let payload = this.passwordForgetGroup.getRawValue();
     this.service.forgotPassword(payload['email']);
   }
