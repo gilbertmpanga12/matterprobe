@@ -11,15 +11,22 @@
     "https://*.google.com/",
     "webNavigation",
     "activeTab",
-    "declarativeContent"
+    "declarativeContent",
+    "cookies"
     ],
     "browser_action": {
         "default_popup": "index.html",
-        "default_title": "Matterprobe"
+        "default_title": "Matterprobe",
+        "default_icon": "assets/ces64.png"
     },
     "background": {
         "scripts": ["background.js"],
         "persistent": false
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "icons": {
+        "16": "assets/ces16.png",
+        "32": "assets/ces32.png",
+        "64": "assets/ces64.png"
+      }
 }
