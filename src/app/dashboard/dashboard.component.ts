@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,28 +9,28 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 controlPanelGroup: FormGroup;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private service: MainService) { }
 
   ngOnInit(): void {
     this.controlPanelGroup = this._fb.group({
-      dailyNotifications: [true],
-      enablePermissions: [true]
+      dailyNotifications: [this.service.weeklyNotifications],
+      enablePermissions: [this.service.allowedPermissions]
     });
 
     this.controlPanelGroup.get('enablePermissions').valueChanges.subscribe(data => {
       if(data){
-        console.log('Enabled permissions');
+        this.service.setPermissions(true);
         return;
       }
-      console.log('disabled permissions ++++');
+      this.service.setPermissions(false);
     });
 
     this.controlPanelGroup.get('dailyNotifications').valueChanges.subscribe(data => {
       if(data){
-        console.log('Enabled daily notifications');
+        this.service.setWeeklyNotifications(true);
         return;
       }
-      console.log('Disabled daily notifications');
+      this.service.setWeeklyNotifications(false);
     });
 
   }

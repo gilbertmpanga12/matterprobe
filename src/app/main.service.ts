@@ -21,7 +21,7 @@ export class MainService {
       this.isSpinning = false;
       if (user){
         this.user = user;
-        localStorage.setItem('userId',user.uid);
+        if(!localStorage.getItem('userId')) localStorage.setItem('userId', user.uid);
       }
     }, err => {
       this.isSpinning = false;
@@ -59,6 +59,8 @@ export class MainService {
 
   async registerAccount(payload: {name:string,password:string,email: string}){
    try{
+    localStorage.setItem('weeeklyPermissions', 'true');
+    localStorage.setItem('allowPermissions', 'true');
     this.isLoading = true;
     let user =  await this.auth.createUserWithEmailAndPassword(payload.email,payload.password);
     user.user.updateProfile({displayName: payload.name});
@@ -69,7 +71,8 @@ export class MainService {
     name: payload.name,
     email: payload.email,
     uid: user.user.uid,
-    created_at: Date.now()
+    created_at: Date.now(),
+    weeklyUpdates: true
     });
    }catch(e){
     this.isLoading = false;
@@ -108,8 +111,32 @@ export class MainService {
    });
   }
 
-  isLoggedIn(){
-    return this.auth.authState;
+  get userId(): string{
+    return localStorage.getItem('userId');
+  }
+
+  get weeklyNotifications(): boolean{
+    return localStorage.getItem('weeeklyPermissions') == 'true' ? true: false;
+  }
+
+  get allowedPermissions(): boolean{
+    return localStorage.getItem('allowPermissions') == 'true' ? true: false;
+  }
+
+  async setWeeklyNotifications(change: boolean){
+    console.log(change);
+    let user = await this.auth.currentUser;
+    await this.firestore.collection('users_matterprobe').doc(user.uid).set(
+      {
+        weeklyUpdates: change
+      },
+      {merge: true}
+    );
+    localStorage.setItem('weeeklyPermissions', `${change}`);
+  }
+
+  async setPermissions(change: boolean){
+    localStorage.setItem('allowPermissions', `${change}`);
   }
 
 
