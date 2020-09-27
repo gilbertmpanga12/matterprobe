@@ -21,6 +21,11 @@ export class SignupComponent implements OnInit {
   }
 
   register(): void{
+    let valid = this.signUpGroup.invalid;
+    if(valid){
+      alert('Please fill in all required fields');
+      return;
+    }
     let payload = this.signUpGroup.getRawValue();
     this.service.registerAccount({
       name: payload['name'],

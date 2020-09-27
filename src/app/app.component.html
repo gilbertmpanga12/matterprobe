@@ -1,8 +1,20 @@
-<ng-container [ngSwitch]="service.user?.emailVerified">
-  <app-dashboard *ngSwitchCase="true"></app-dashboard>
-  <!-- confirm email component -->
-  <app-sign-in *ngSwitchDefault></app-sign-in>
+<div
+*ngIf="service.isSpinning"
+style="
+vertical-align: middle;
+text-align: center;
+border-style: none;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);">
+<div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
 
-</ng-container>
-
-
+<app-dashboard *ngIf="service.user"></app-dashboard>
+<app-sign-in *ngIf="!service.user || service.isSpinning"></app-sign-in>

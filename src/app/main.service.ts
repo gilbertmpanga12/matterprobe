@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { auth } from 'firebase/app';
-import { firestore as ft } from 'firebase/app';
+// import { auth } from 'firebase/app';
+// import { firestore as ft } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
@@ -12,14 +12,19 @@ export class MainService {
   isSignIn: boolean = true;
   isSignUp: boolean = false;
   isPasswordForgot: boolean = false;
+  isSpinning: boolean = true;
+
   user: User;
   isLoading: boolean = false;
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {
     this.auth.authState.subscribe(user => {
+      this.isSpinning = false;
       if (user){
         this.user = user;
         localStorage.setItem('userId',user.uid);
       }
+    }, err => {
+      this.isSpinning = false;
     });
   }
 
@@ -42,37 +47,53 @@ export class MainService {
   }
 
   async login(email: string, password: string){
-    this.isLoading = true;
-    await this.auth.signInWithEmailAndPassword(email,password).then(() => {
-      this.isLoading = false;
-    }).catch(err => {
-      this.isLoading = false;
-      alert(err);
-    });
+   try{
+        this.isLoading = true;
+    await this.auth.signInWithEmailAndPassword(email,password);
+    this.isLoading = false;
+   }catch(e){
+     this.isLoading = false;
+     alert(e);
+   }
   }
 
   async registerAccount(payload: {name:string,password:string,email: string}){
-   this.isLoading = true;
-   let user =  await this.auth.createUserWithEmailAndPassword(payload.email,payload.password);
-   user.user.updateProfile({displayName: payload.name});
-   this.resendEmailLink();
-   this.isLoading = false;
-   await this.firestore.collection('users_matterprobe').doc(user.user.uid) // <Student>
-   .set({
-   name: payload.name,
-   email: payload.email,
-   uid: user.user.uid,
-   created_at: Date.now()
-   });
-  
+   try{
+    this.isLoading = true;
+    let user =  await this.auth.createUserWithEmailAndPassword(payload.email,payload.password);
+    user.user.updateProfile({displayName: payload.name});
+    this.resendEmailLink();
+    this.isLoading = false;
+    await this.firestore.collection('users_matterprobe').doc(user.user.uid) // <Student>
+    .set({
+    name: payload.name,
+    email: payload.email,
+    uid: user.user.uid,
+    created_at: Date.now()
+    });
+   }catch(e){
+    this.isLoading = false;
+    alert(e);
+   }
   }
 
   async resendEmailLink(){
+   try{
     await (await this.auth.currentUser).sendEmailVerification();
+   }catch(e){
+    alert(e);
+   }
   }
 
   async forgotPassword(email: string){
+   try{
+     this.isLoading = true;
     await this.auth.sendPasswordResetEmail(email);
+    this.isLoading = false;
+   }catch(e){
+    this.isLoading = false;
+    alert(e);
+   }
   }
 
 
@@ -87,6 +108,9 @@ export class MainService {
    });
   }
 
+  isLoggedIn(){
+    return this.auth.authState;
+  }
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {MainService} from '../main.service';
+import { invalid } from '@angular/compiler/src/render3/view/util';
 
 
 @Component({
@@ -23,6 +24,11 @@ signInGroup: FormGroup;
   }
 
   signIn(): void{
+    let valid = this.signInGroup.invalid;
+    if(valid){
+      alert('Please fill in all required fields');
+      return;
+    }
     let payload = this.signInGroup.getRawValue();
     this.service.login(payload['email'], payload['password']);
   }
