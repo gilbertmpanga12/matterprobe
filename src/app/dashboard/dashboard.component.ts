@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MainService } from '../main.service';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +13,14 @@ import { MainService } from '../main.service';
 })
 export class DashboardComponent implements OnInit {
 controlPanelGroup: FormGroup;
-  constructor(private _fb: FormBuilder, private service: MainService) { }
+opportunitiesCount: AngularFirestoreDocument<{opportunitiesCount: number}>
+opportunitiesCount$: Observable<{opportunitiesCount: number}>;
+  constructor(private _fb: FormBuilder, 
+    private service: MainService, private af: AngularFirestore) {
+      this.opportunitiesCount = this.af.doc('users_matterprobe/' + this.service.userId);
+      this.opportunitiesCount$ = this.opportunitiesCount.valueChanges();
+
+   }
 
   ngOnInit(): void {
     this.controlPanelGroup = this._fb.group({

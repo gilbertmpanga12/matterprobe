@@ -72,7 +72,8 @@ export class MainService {
     email: payload.email,
     uid: user.user.uid,
     created_at: Date.now(),
-    weeklyUpdates: true
+    weeklyUpdates: true,
+    opportunitiesCount: 0
     });
    }catch(e){
     this.isLoading = false;
@@ -138,6 +139,7 @@ export class MainService {
   async setPermissions(change: boolean){
     localStorage.setItem('allowPermissions', `${change}`);
   }
+
 
 
 

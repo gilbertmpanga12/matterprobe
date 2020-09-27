@@ -19,7 +19,31 @@
       <img src="assets/pixeltrue-vision.svg" class="mt-16 mb-5 h-48" />
       <!-- <h1 class="text-center text-4xl px-1"><span class="font-bold">0&nbsp;</span> <small>hits</small></h1> -->
       <!-- text-3xl -->
-      <h1 class="text-center px-1" style="font-size: 22px;">Hunting opportunities now </h1>
+      <ng-container *ngIf="opportunitiesCount$ | async; let ops; else loading">
+        <h1 class="text-center px-1" style="font-size: 22px;" 
+        *ngIf="ops.opportunitiesCount == 0">Hunting opportunities now </h1>
+        <h1 class="text-center px-1" style="font-size: 22px;" 
+        *ngIf="ops.opportunitiesCount > 0">{{ops}} opportunities</h1>
+      </ng-container>
+
+      <ng-template #loading>
+        <div
+        style="
+        vertical-align: middle;
+        text-align: center;
+        border-style: none;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+      </ng-template>
       
      <span class="absolute position-dot">
         <span class="flex h-3 w-3 relative">
