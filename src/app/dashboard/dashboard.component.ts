@@ -16,7 +16,7 @@ controlPanelGroup: FormGroup;
 opportunitiesCount: AngularFirestoreDocument<{opportunitiesCount: number}>
 opportunitiesCount$: Observable<{opportunitiesCount: number}>;
   constructor(private _fb: FormBuilder, 
-    private service: MainService, private af: AngularFirestore) {
+    public service: MainService, private af: AngularFirestore) {
       this.opportunitiesCount = this.af.doc('users_matterprobe/' + this.service.userId);
       this.opportunitiesCount$ = this.opportunitiesCount.valueChanges();
 

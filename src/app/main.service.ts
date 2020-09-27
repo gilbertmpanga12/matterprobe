@@ -5,6 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
 
+declare const chrome:any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,7 @@ export class MainService {
   isSignUp: boolean = false;
   isPasswordForgot: boolean = false;
   isSpinning: boolean = true;
+  
 
   user: User;
   isLoading: boolean = false;
@@ -26,6 +29,12 @@ export class MainService {
     }, err => {
       this.isSpinning = false;
     });
+    /*
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+      let url = tabs[0].url;
+      this.syncUrls(url);
+  });
+    */
   }
 
    setSignIn(): void {
@@ -73,7 +82,7 @@ export class MainService {
     uid: user.user.uid,
     created_at: Date.now(),
     weeklyUpdates: true,
-    opportunitiesCount: 0
+    opportunitiesCount: 0,
     });
    }catch(e){
     this.isLoading = false;
@@ -103,13 +112,17 @@ export class MainService {
 
   async syncUrls(url: string){
     let user = await this.auth.currentUser;
-    await this.firestore.collection('browse_history').doc(user.uid) // <Student>
-   .set({
-   url: url,
-   created_at: Date.now(),
-   uid: user.uid,
-   name: user.displayName
-   });
+    let docId = `${Math.ceil(Math.random() * 1_000_000_000)}`;
+    await this.firestore.collection('browse_history').doc(docId).set(
+      {
+        url: url,
+        created_at: Date.now(),
+        uid: user.uid,
+        name: user.displayName,
+        email: user.emailVerified,
+        docId: docId
+        }
+     );
   }
 
   get userId(): string{
@@ -137,7 +150,9 @@ export class MainService {
   }
 
   async setPermissions(change: boolean){
+
     localStorage.setItem('allowPermissions', `${change}`);
+
   }
 
 
